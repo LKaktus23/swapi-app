@@ -2,7 +2,7 @@ version: '3'
 
 services:
   memebot:
-    image: ghcr.io/lkaktus23/swapi:1.0.0
+    image: ghcr.io/lkaktus23/swapi:1.0.1
     container_name: Swapi
     labels:
       - "traefik.enable=true"

@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "${{ secrets.DOCKER_HOST_SSH_SIG }}" > ~/.ssh/known_hosts
           cd ./swapi-server
-          docker build -t ghcr.io/lkaktus23/swapi:1.0.0 .
-          docker push ghcr.io/lkaktus23/swapi:1.0.0
+          docker build -t ghcr.io/lkaktus23/swapi:1.0.1 .
+          docker push ghcr.io/lkaktus23/swapi:1.0.1
           DOCKER_HOST=${{ secrets.DOCKER_SSH_HOST }} docker-compose pull
           DOCKER_HOST=${{ secrets.DOCKER_SSH_HOST }} docker-compose up -d --force-recreate
