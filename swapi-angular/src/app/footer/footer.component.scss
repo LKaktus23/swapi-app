@@ -1,0 +1,18 @@
+.footer{
+  height: 60px;
+  align-items: center;
+  background-color: var(--base_color_light);
+  color: var(--text_color_footer);
+  font-size: 12px;
+  width: 100%;
+  &__text{
+    padding: 8px;
+  }
+}
+
+svg{
+  right: 0;
+  height: 30px;
+  width: 30px;
+  color: white;
+}

@@ -1,0 +1,19 @@
+.details{
+  color: var(--text_color_light);
+  border: 2px solid var(--text_color_light);
+  text-align: left;
+  border-collapse: collapse;
+  max-width: 100%;
+  &__element {
+    border: 2px solid var(--text_color_light);
+    &--link {
+      display: block;
+      color: var(--text_color_light);
+      padding: 8px;
+    }
+    &--text {
+      top:0;
+      padding: 8px;
+    }
+  }
+}

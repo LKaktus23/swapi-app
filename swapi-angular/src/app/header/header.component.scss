@@ -1,0 +1,19 @@
+.header{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--base_color_light);
+  padding-left: 16px;
+  padding-right: 16px;
+  &__title{
+    color: var(--text_color_light);
+    text-decoration: none;
+  }
+}
+
+svg{
+  right: 0;
+  height: 30px;
+  width: 30px;
+}

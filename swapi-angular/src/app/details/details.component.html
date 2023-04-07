@@ -1,0 +1,20 @@
+<table *ngIf="isMobile(); else desktop" class="details">
+    <tr>
+      <th class="details__element--header"><p class="details__element--text">{{type === "film" ? "Title" : "Name"}}</p></th>
+      <td class="details__element"><p class="details__element--text">{{getName()}}</p></td>
+    </tr>
+    <tr *ngFor="let key of getKeys()" class="details__row">
+      <th class="details__element">
+        <p class="details__element--text">{{toHumanReadableString(key)}}</p>
+      </th>
+      <td class="details__element">
+        <p *ngIf="!linkKeys.includes(key); else elseBlock" class="details__element--text">{{toHumanReadableString(getString(key))}}</p>
+        <ng-template #elseBlock>
+          <a *ngFor="let value of getSearchItemDtos(key)" [routerLink]="['/details',value.type, value.id]" class="details__element--link">{{value.name}}</a>
+        </ng-template>
+      </td>
+    </tr>
+</table>
+<ng-template #desktop>
+  DESKTOP!
+</ng-template>

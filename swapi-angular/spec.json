@@ -1,0 +1,810 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/vehicles/get": {
+      "get": {
+        "tags": [
+          "vehicle-controller"
+        ],
+        "summary": "Returns the vehicle to the ID",
+        "operationId": "getVehicle",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "there is no vehicle for given id"
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    },
+    "/api/starships/get": {
+      "get": {
+        "tags": [
+          "starship-controller"
+        ],
+        "summary": "Returns the starship to the ID",
+        "operationId": "getStarship",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StarshipDTO"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "404": {
+            "description": "there is no starship for given id"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    },
+    "/api/species/get": {
+      "get": {
+        "tags": [
+          "species-controller"
+        ],
+        "summary": "Returns the species to the ID",
+        "operationId": "getSpecies",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "503": {
+            "description": "swapi is not available"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "there is no species for given id"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          },
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search/getAll": {
+      "get": {
+        "tags": [
+          "search-controller"
+        ],
+        "summary": "Get all available items",
+        "operationId": "getAllSearchItems",
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    },
+    "/api/planets/get": {
+      "get": {
+        "tags": [
+          "planet-controller"
+        ],
+        "summary": "Returns the planet to the ID",
+        "operationId": "getPlanet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanetDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "there is no planet for given id"
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    },
+    "/api/films/get": {
+      "get": {
+        "tags": [
+          "film-controller"
+        ],
+        "summary": "Returns the film to the ID",
+        "operationId": "getFilm",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmDTO"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "there is no film for given id"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    },
+    "/api/characters/get": {
+      "get": {
+        "tags": [
+          "character-controller"
+        ],
+        "summary": "Returns the character to the ID",
+        "operationId": "getCharacter",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterDTO"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          },
+          "404": {
+            "description": "there is no character for given id"
+          }
+        }
+      }
+    },
+    "/api/characters/getAll": {
+      "get": {
+        "tags": [
+          "character-controller"
+        ],
+        "summary": "Get all available characters",
+        "operationId": "getAllCharacters",
+        "responses": {
+          "200": {
+            "description": "Everything works fine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "swapi is not available"
+          },
+          "500": {
+            "description": "Unknown internal error occured"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SearchItemDTO": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "VehicleDTO": {
+        "type": "object",
+        "properties": {
+          "cost_in_credits": {
+            "type": "string"
+          },
+          "max_atmosphering_speed": {
+            "type": "string"
+          },
+          "vehicle_class": {
+            "type": "string"
+          },
+          "consumables": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "crew": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "length": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "passengers": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filmItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "pilots": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pilotItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      },
+      "StarshipDTO": {
+        "type": "object",
+        "properties": {
+          "MGLT": {
+            "type": "string"
+          },
+          "cargo_capacity": {
+            "type": "string"
+          },
+          "cost_in_credits": {
+            "type": "string"
+          },
+          "hyperdrive_rating": {
+            "type": "string"
+          },
+          "maxAtmospheringSpeed": {
+            "type": "string"
+          },
+          "starship_class": {
+            "type": "string"
+          },
+          "consumables": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "crew": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "length": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "passengers": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filmItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "pilots": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pilotItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      },
+      "SpeciesDTO": {
+        "type": "object",
+        "properties": {
+          "average_height": {
+            "type": "string"
+          },
+          "average_lifespan": {
+            "type": "string"
+          },
+          "eye_colors": {
+            "type": "string"
+          },
+          "hair_colors": {
+            "type": "string"
+          },
+          "skin_colors": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "designation": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "homeworld": {
+            "type": "string"
+          },
+          "homeworldItem": {
+            "$ref": "#/components/schemas/SearchItemDTO"
+          },
+          "language": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "people": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "characterItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filmItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      },
+      "PlanetDTO": {
+        "type": "object",
+        "properties": {
+          "orbital_period": {
+            "type": "string"
+          },
+          "rotation_period": {
+            "type": "string"
+          },
+          "surface_water": {
+            "type": "string"
+          },
+          "climate": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "diameter": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "gravity": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "population": {
+            "type": "string"
+          },
+          "terrain": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filmItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "residents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "residentItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      },
+      "FilmDTO": {
+        "type": "object",
+        "properties": {
+          "episode_id": {
+            "type": "string"
+          },
+          "opening_crawl": {
+            "type": "string"
+          },
+          "release_date": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "director": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "producer": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "characters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "characterItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "planets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planetItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "species": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "speciesItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "starships": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "starshipItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "vehicles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vehicleItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      },
+      "CharacterDTO": {
+        "type": "object",
+        "properties": {
+          "birth_year": {
+            "type": "string"
+          },
+          "eye_color": {
+            "type": "string"
+          },
+          "hair_color": {
+            "type": "string"
+          },
+          "skin_color": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "height": {
+            "type": "string"
+          },
+          "homeworld": {
+            "type": "string"
+          },
+          "homeworldItem": {
+            "$ref": "#/components/schemas/SearchItemDTO"
+          },
+          "mass": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "edited": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "films": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filmItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "species": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "speciesItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "starships": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "starshipItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          },
+          "vehicles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vehicleItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchItemDTO"
+            }
+          }
+        }
+      }
+    }
+  }
+}

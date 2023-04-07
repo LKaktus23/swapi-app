@@ -1,0 +1,17 @@
+:root {
+  --base_color: #1e1f24;
+  --base_color_light: #2a2c33;
+  --text_color_footer: #9a9a9c;
+  --text_color_light: #f0f0f0;
+}
+
+html{
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+}
+body{
+  background-color: var(--base_color);
+  margin:0;
+  height: 100%;
+}
+
