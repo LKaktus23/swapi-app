@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {SearchControllerService} from "../api";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-searchpage',
@@ -13,7 +14,7 @@ export class SearchpageComponent {
   searchItems:any;
   filteredSearchItems:any = [];
   sub:Subscription|null = null;
-  constructor(private readonly searchControllerService:SearchControllerService) {}
+  constructor(private readonly searchControllerService:SearchControllerService, private router: Router) {}
   ngOnInit() {
     this.sub = this.searchControllerService?.getAllSearchItems().subscribe(result =>{
       this.searchItems = result;
@@ -29,8 +30,8 @@ export class SearchpageComponent {
   }
   onEnter(){
     const potentialHits = this.filterList();
-    if(potentialHits.length === 1 && potentialHits[0].name.toUpperCase() === this.searchTerm.toUpperCase()){
-      //HIT!
+    if(potentialHits.length === 1){
+      this.router.navigate(["/details", potentialHits[0].type, potentialHits[0].id]);
     }
   }
 
