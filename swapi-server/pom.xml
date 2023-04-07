@@ -63,7 +63,7 @@
                             <overwrite>true</overwrite>
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/frontend/dist/swapi-angular</directory>
+                                    <directory>${project.parent.basedir}/swapi-angular/dist/swapi-angular</directory>
                                 </resource>
                             </resources>
                         </configuration>
