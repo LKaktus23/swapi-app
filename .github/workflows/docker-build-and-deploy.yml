@@ -1,0 +1,53 @@
+name: Docker Build and Deploy
+
+on:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: npm install
+        working-directory: ./swapi-angular
+        run: npm install
+      - name: npm run build
+        working-directory: ./swapi-angular
+        run: npm run build
+      - name: Set up JDK 20
+        uses: actions/setup-java@v2
+        with:
+          java-version: '20'
+          distribution: 'adopt'
+          server-id: github
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Build with Maven
+        run: mvn package --file pom.xml
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy Container
+        run: |
+          echo "${{ secrets.DOCKER_HOST_SSH_SIG }}" > ~/.ssh/known_hosts
+          cd ./swapi-server
+          docker build -t ghcr.io/lkaktus23/swapi:1.0.0 .
+          docker push ghcr.io/lkaktus23/swapi:1.0.0
+          DOCKER_HOST=${{ secrets.DOCKER_SSH_HOST }} docker-compose pull
+          DOCKER_HOST=${{ secrets.DOCKER_SSH_HOST }} docker-compose up -d --force-recreate

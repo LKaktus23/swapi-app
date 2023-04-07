@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  memebot:
+    image: ghcr.io/lkaktus23/swapi:1.0.0
+    container_name: Swapi
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.swapi.rule=Host(`swapi.lkaktus23.de`)"
+      - "traefik.http.services.swapi.loadbalancer.server.port=8080"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.swapi.entrypoints=websecure"
+      - "traefik.http.routers.swapi.tls.certresolver=myresolver"
+    networks:
+      - traefik_proxy
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge
