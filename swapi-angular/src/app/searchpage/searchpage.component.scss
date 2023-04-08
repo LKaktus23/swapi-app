@@ -1,6 +1,8 @@
 .search-form{
   color: var(--text_color_light);
   &__search-input{
+    padding-left: 0;
+    padding-right: 0;
     height: 50px;
     width: 100%;
     font-size: 16px;
@@ -34,7 +36,6 @@
     border-style: none;
     border-bottom: 2px solid var(--base_color_light);
     outline-style: none;
-    margin-left: 2px;
     display: flex;
     align-items: center;
     &--link{
