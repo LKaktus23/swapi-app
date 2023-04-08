@@ -1,0 +1,3 @@
+<div id="loading-bar" [class]="'loading-bar' + (isLoading ? ' loading-bar--start' : (finishedLoading ? ' loading-bar--finished':''))" (loading)="onStartLoading()" (finish)="onFinished()">
+  <div [class]="'loading-bar__progress' + (finishedLoading ? ' loading-bar__progress--finished' : '')"></div>
+</div>

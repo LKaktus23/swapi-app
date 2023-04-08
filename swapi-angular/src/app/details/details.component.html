@@ -1,4 +1,6 @@
-<table *ngIf="isMobile(); else desktop" class="details">
+<div *ngIf="dto !== null">
+  <a class="details__start-link" routerLink="/">Start new search</a>
+  <table class="details">
     <tr>
       <th class="details__element--header"><p class="details__element--text">{{type === "film" ? "Title" : "Name"}}</p></th>
       <td class="details__element"><p class="details__element--text">{{getName()}}</p></td>
@@ -14,7 +16,5 @@
         </ng-template>
       </td>
     </tr>
-</table>
-<ng-template #desktop>
-  DESKTOP!
-</ng-template>
+  </table>
+</div>

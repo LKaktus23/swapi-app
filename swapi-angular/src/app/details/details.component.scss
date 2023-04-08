@@ -4,6 +4,7 @@
   text-align: left;
   border-collapse: collapse;
   max-width: 100%;
+  margin-top: 16px;
   &__element {
     border: 2px solid var(--text_color_light);
     &--link {
@@ -15,5 +16,9 @@
       top:0;
       padding: 8px;
     }
+  }
+  &__start-link{
+    color: var(--text_color_light);
+    min-width: 100%;
   }
 }

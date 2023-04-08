@@ -1,7 +1,6 @@
 .container{
   display: flex;
   flex-direction: column;
-  max-width: 750px;
   height: auto;
   min-height: 100%;
   @media screen and (min-width: 768px){
@@ -10,5 +9,7 @@
   }
   &__main{
     padding: 16px;
+    max-width: 750px;
+    align-self: center;
   }
 }

@@ -31,42 +31,49 @@ export class DetailsComponent {
   ) {}
 
   ngOnInit() {
+    document.getElementById("loading-bar")?.dispatchEvent(new Event("loading"));
     this.subs.push(this.route.params.subscribe(params => {
       this.id = params['id'];
       this.type = params['type'];
       switch (this.type) {
         case "character":{
           this.subs.push(this.characterControllerService.getCharacter(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
         }
         case "film":{
           this.subs.push(this.filmControllerService.getFilm(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
         }
         case "planet":{
           this.subs.push(this.planetControllerService.getPlanet(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
         }
         case "species":{
           this.subs.push(this.speciesControllerService.getSpecies(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
         }
         case "starship":{
           this.subs.push(this.starshipControllerService.getStarship(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
         }
         case "vehicle":{
           this.subs.push(this.vehicleControllerService.getVehicle(this.id).subscribe(result =>{
+            document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
             this.dto = result;
           }));
           break;
@@ -128,9 +135,5 @@ export class DetailsComponent {
       value = [value];
     }
     return value;
-  }
-
-  isMobile(){
-    return window.innerWidth < 768;
   }
 }

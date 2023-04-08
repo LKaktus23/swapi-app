@@ -10,6 +10,7 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 
 import {SearchControllerService, CharacterControllerService, FilmControllerService, SpeciesControllerService, StarshipControllerService, VehicleControllerService, PlanetControllerService} from "./api";
 import { DetailsComponent } from './details/details.component';
+import { LoadingbarComponent } from './loadingbar/loadingbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DetailsComponent } from './details/details.component';
     HeaderComponent,
     FooterComponent,
     SearchpageComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoadingbarComponent
   ],
   imports: [
     BrowserModule,

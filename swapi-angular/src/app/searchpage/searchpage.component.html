@@ -1,9 +1,12 @@
 <div class="search-form">
-  <label class="search-form__search-label" for="search-input">Search-Term</label>
-  <input #searchInput (keyup.enter)= "onEnter()" (keyup)="onKey(searchInput.value)" id="search-input" class="search-form__search-input" type="text" />
-  <p *ngIf="filteredSearchItems.length === 0; else elseBlock" class="search-form__info">results are only displayed from 2 characters</p>
-  <ng-template #elseBlock>
-    <div class="search-form__result" #elseBlock *ngFor="let item of filteredSearchItems">
+  <p>You can search for every Star Wars related term!</p>
+  <label class="search-form__search-label" for="search-input">Search</label>
+  <input #searchInput (keyup.enter)="onEnter()" (keyup)="onKey(searchInput.value)" id="search-input" class="search-form__search-input" type="text" />
+  <p *ngIf="filteredSearchItems.length === 0; else results" class="search-form__info">
+    {{searchTerm.length <= 2 ? 'results are only displayed from 2 characters':'No Results'}}
+  </p>
+  <ng-template #results>
+    <div class="search-form__result" *ngFor="let item of filteredSearchItems">
       <a [routerLink]="['/details',item.type, item.id]" class="search-form__result--link">{{item.name + " (" + item.type + ")"}}</a>
     </div>
   </ng-template>

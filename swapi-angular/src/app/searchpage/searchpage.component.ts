@@ -16,7 +16,9 @@ export class SearchpageComponent {
   sub:Subscription|null = null;
   constructor(private readonly searchControllerService:SearchControllerService, private router: Router) {}
   ngOnInit() {
+    document.getElementById("loading-bar")?.dispatchEvent(new Event("loading"));
     this.sub = this.searchControllerService?.getAllSearchItems().subscribe(result =>{
+      document.getElementById("loading-bar")?.dispatchEvent(new Event("finish"));
       this.searchItems = result;
     });
   }
